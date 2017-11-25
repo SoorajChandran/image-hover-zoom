@@ -8,7 +8,17 @@ class ImageZoom extends Component {
     this.zoomFactor = parseInt(this.props.options.zoomFactor, 10) || 3;
     this.frameHeight = 100;
     this.frameWidth = 200;
+    this.handleMouseMove = this.handleMouseMove.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
   }
+
+  /* find the target sibling element - takes element - el and the id of the sibling - targetId  */
+  getTargetElement = (el,targetId) => {
+    const children = el.parentNode.childNodes;
+    return Array.from(children).find( (item) => item.id === targetId );
+  }
+
 
   /* to add the frame on hover */
   addFrame = (x,y,el) => {
@@ -20,17 +30,6 @@ class ImageZoom extends Component {
     frameEl.style.top = `${minY}px`;
     const scaledValues = this.scaleValues(minX - el.offsetLeft,minY - el.offsetTop);
     this.getTargetElement(el,"zoomedImageContainer").style.backgroundPosition = `${scaledValues[0]}px ${scaledValues[1]}px`;
-  }
-
-  /* find the target sibling element - takes element - el and the id of the sibling - targetId  */
-  getTargetElement = (el,targetId) => {
-    const children = el.parentNode.childNodes;
-    return Array.from(children).find(function(item){
-      if(item.id === targetId){
-        return true;
-      }
-    })
-    return false;
   }
 
   hide(id,el){
@@ -53,7 +52,7 @@ class ImageZoom extends Component {
       targetEl.style.background = `url(${this.props.options.originalImage}) no-repeat`;
       targetEl.style.backgroundSize = `${this.zoomFactor*600}px ${this.zoomFactor*300}px`;
     }else{
-      targetEl.style.background = `url(${this.props.options.  compressedImage}) no-repeat`;
+      targetEl.style.background = `url(${this.props.options.compressedImage}) no-repeat`;
       targetEl.style.backgroundSize = `${this.zoomFactor*600}px ${this.zoomFactor*300}px`;
     }
     
@@ -62,7 +61,7 @@ class ImageZoom extends Component {
   /* to check if the high-def image is loaded */
   isImageLoaded = () => {
     const img = new Image();
-    img.src = this.props.originalImage;
+    img.src = this.props.options.originalImage;
     return img.complete;
   }
 
@@ -87,16 +86,14 @@ class ImageZoom extends Component {
       <div>
        <div className={`image-container ${dir}`}>
         <img 
-        onMouseMove={this.handleMouseMove.bind(this)} 
-        onMouseLeave={this.handleMouseLeave.bind(this)}
-        onMouseEnter={this.handleMouseEnter.bind(this)}
+        onMouseMove={this.handleMouseMove} 
+        onMouseLeave={this.handleMouseLeave}
+        onMouseEnter={this.handleMouseEnter}
         className="sampleImage" 
         src={compressedImage} 
         alt="sample"/>
-        <div id="frame" className="frame">
-        </div>
-        <div id="zoomedImageContainer" className="zoomedImageContainer">  
-        </div>
+        <div id="frame" className="frame"/>
+        <div id="zoomedImageContainer" className="zoomedImageContainer"/>  
       </div>
       </div>
     )

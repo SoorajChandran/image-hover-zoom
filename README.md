@@ -1,6 +1,6 @@
 # React component for zoom on hover ( e-commerce websites )
 
-Simple component for zoom on hover.
+Simple component for zoom on hover. [Live Demo](https://soorajchandran.github.io/image-hover-zoom/)
 
 
 Clone the repo

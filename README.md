@@ -6,8 +6,8 @@ Simple component for zoom on hover.
 Clone the repo
 
 ```sh
-$ yard add
-$ yarn start
+$ npm install
+$ npm start
 ```
 
 ### Linting

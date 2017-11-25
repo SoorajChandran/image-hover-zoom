@@ -14,7 +14,7 @@ $ npm start
 
 
 ```sh
-$ yard run lint
+$ yarn run lint
 ```
 
 

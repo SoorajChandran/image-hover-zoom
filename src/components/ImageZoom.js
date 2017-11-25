@@ -103,9 +103,13 @@ class ImageZoom extends Component {
   }
 }
 
-ImageZoom.PropTypes = {
-  imgSrc: PropTypes.string.isRequired,
-  zoomFactor: PropTypes.string
+ImageZoom.propTypes = {
+    options: PropTypes.shape({
+      originalImage: PropTypes.string.isRequired,
+      compressedImage: PropTypes.string.isRequired,
+      dir: PropTypes.string.isRequired,
+      zoomFactor: PropTypes.string
+    })
 }
 
 export default ImageZoom;

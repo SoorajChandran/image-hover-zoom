@@ -3,24 +3,23 @@
   width: 600px;
   cursor: crosshair; }
 
-.App .image-container {
-  /*position: relative;*/ }
-  .App .image-container .frame {
-    height: 100px;
-    width: 200px;
-    top: 0;
-    left: 0;
-    display: none;
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.8);
-    position: absolute;
-    pointer-events: none; }
-  .App .image-container .zoomedImageContainer {
-    height: 300px;
-    width: 600px;
-    overflow: hidden;
-    position: absolute;
-    background-position: 0 0; }
+.App .image-container .frame {
+  height: 100px;
+  width: 200px;
+  top: 0;
+  left: 0;
+  display: none;
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  position: absolute;
+  pointer-events: none; }
+
+.App .image-container .zoomedImageContainer {
+  height: 300px;
+  width: 600px;
+  overflow: hidden;
+  position: absolute;
+  background-position: 0 0; }
 
 .App .image-container.right {
   text-align: right; }

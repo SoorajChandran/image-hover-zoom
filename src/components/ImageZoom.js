@@ -10,6 +10,7 @@ class ImageZoom extends Component {
     this.frameWidth = 200;
   }
 
+  /* to add the frame on hover */
   addFrame = (x,y,el) => {
     const { left, top , width ,height } = el.getBoundingClientRect();
     const minX = Math.min(x,(left + width - this.frameWidth));
@@ -21,6 +22,7 @@ class ImageZoom extends Component {
     this.getTargetElement(el,"zoomedImageContainer").style.backgroundPosition = `${scaledValues[0]}px ${scaledValues[1]}px`;
   }
 
+  /* find the target sibling element - takes element - el and the id of the sibling - targetId  */
   getTargetElement = (el,targetId) => {
     const children = el.parentNode.childNodes;
     return Array.from(children).find(function(item){
@@ -35,12 +37,15 @@ class ImageZoom extends Component {
       this.getTargetElement(el,id).style.display = 'none';
   }
 
+  /* return the scaled values */
   scaleValues = (x,y) => ([-1*this.zoomFactor*parseInt(x,10),-1*this.zoomFactor*parseInt(y,10)])
 
+  /* show the zoomed image container */
   showZoomedContainer = (el) => {
     const targetEl = this.getTargetElement(el,"zoomedImageContainer");
     targetEl.style.display = 'block';
     const { left, top , width } = el.getBoundingClientRect();
+    /* to check the location if the images - whether left/right */
     targetEl.style.left = left <= window.screen.width/2 ? `${left + width}px`:  `${left - 600}px`;
     targetEl.style.top = `${top}px` ;
 
@@ -54,6 +59,7 @@ class ImageZoom extends Component {
     
   }
 
+  /* to check if the high-def image is loaded */
   isImageLoaded = () => {
     const img = new Image();
     img.src = this.props.originalImage;

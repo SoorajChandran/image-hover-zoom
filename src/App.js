@@ -19,6 +19,7 @@ const img2 = {
 
 const App = () => (
   <div className="App">
+    <h1> Hover on the image </h1>
     <ImageZoom options={img1}/>
     <ImageZoom options={img2}/>        
   </div>

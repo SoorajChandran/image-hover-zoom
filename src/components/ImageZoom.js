@@ -65,14 +65,18 @@ class ImageZoom extends Component {
     return img.complete;
   }
 
+  /* handle mouse enter */
   handleMouseEnter = (e) => {
     this.getTargetElement(e.target,"frame").style.display = 'block';
     this.showZoomedContainer(e.target);
   }
 
+  /* handle mouse move */
   handleMouseMove = (e) => {
     this.addFrame(e.clientX,e.clientY,e.target);
   }
+
+  /* handle mouse leave */
   handleMouseLeave = (e) => {
     this.hide("frame",e.target);
     this.hide("zoomedImageContainer",e.target);

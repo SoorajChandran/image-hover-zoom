@@ -23,7 +23,7 @@ const img2 = {
 const App = () => (
   <div className="App">
     <h1> Hover on the image </h1>
-    <h1> React component for e-commerce product zoom on hover </h1>
+    <h3> React component for e-commerce product zoom on hover </h3>
     <ImageZoom options={img1} />
     <ImageZoom options={img2} />
   </div>
